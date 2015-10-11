@@ -8,7 +8,9 @@ data DataFrame = DataFrame {
 
 type DMatrix = [[Float]]
 
+
 unique = L.nub
+
 
 strToFloat :: String -> Float
 strToFloat s = case R.readMaybe s :: Maybe Float of
