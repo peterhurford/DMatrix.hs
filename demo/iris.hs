@@ -7,6 +7,8 @@ handleError csv = putStrLn "error parsing"
 
 doWork :: [[String]] -> IO ()
 doWork csv = do
+  print "ID"
+  print $ map D.strToFloat $ D.row "ID" csv
   print "Petal.Length"
   print $ map D.strToFloat $ D.row "Petal.Length" csv
   print $ (!!1) $ D.headers csv
@@ -20,6 +22,10 @@ doWork csv = do
   print $ (!!5) $ D.headers csv
   print $ L.nub $ D.index 5 csv
   print $ D.factorize $ D.index 5 csv
+  print "The Whole Thing (deparsed)"
+  print $ L.transpose $ D.body csv
+  print "The Whole Thing (parsed)"
+  print $ D.toDMatrix csv
 
 main :: IO ()
 main = do
