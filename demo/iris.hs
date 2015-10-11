@@ -11,13 +11,13 @@ doWork csv = do
   print $ map D.strToFloat $ D.row "Petal.Length" csv
   print $ (!!1) $ D.headers csv
   print $ map D.strToFloat $ D.index 1 csv
-  print $ (!!2) $ head csv
+  print $ (!!2) $ D.headers csv
   print $ map D.strToFloat $ D.index 2 csv
-  print $ (!!3) $ head csv
+  print $ (!!3) $ D.headers csv
   print $ map D.strToFloat $ D.index 3 csv
-  print $ (!!4) $ head csv
+  print $ (!!4) $ D.headers csv
   print $ map D.strToFloat $ D.index 4 csv
-  print $ (!!5) $ head csv
+  print $ (!!5) $ D.headers csv
   print $ L.nub $ D.index 5 csv
   print $ D.factorize $ D.index 5 csv
 
