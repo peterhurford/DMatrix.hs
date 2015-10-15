@@ -82,8 +82,7 @@ seqAlong xs = [0..(length xs -1)]
 
 --TODO: I ended up not needing this, but I don't want to get rid of it.
 which :: [Bool] -> [Int]
-which xs = filter (\x -> x /= -1)
-  [ if (xs !! j) == True then j else -1 | j <- seqAlong xs ]
+which bools = (map fst) . (filter snd) $ zip [0..] bools
 
 
 convertColumn :: [String] -> [Float]
