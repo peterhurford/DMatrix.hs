@@ -9,6 +9,7 @@ data DataFrame = DataFrame {
 type DMatrix = [[Float]]
 
 
+unique :: [String] -> [String]
 unique = L.nub
 
 
