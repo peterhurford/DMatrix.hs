@@ -65,15 +65,15 @@ dummyDf (x:xs) = (processColumn x) : (dummyDf xs)
 -- instance Mungeable [String] where
 --   munge1 :: [String] -> [[b]]
 
-data Column = Float [Float] | Character [String]
-type Mungestep = Column -> [Column]
+-- data Column = Float [Float] | Character [String]
+-- type Mungestep = Column -> [Column]
 
-munge :: [Mungestep] -> DataFrame -> DataFrame
-munge []     df = df
-munge (x:xs) df = munge xs $ munge1 x $ body df
+-- munge :: [Mungestep] -> DataFrame -> DataFrame
+-- munge []     df = df
+-- munge (x:xs) df = munge xs $ munge1 x $ body df
 
-munge1 :: Mungestep -> DataFrame -> DataFrame
-munge1 m df = foldl (++) (m df) []
+-- munge1 :: Mungestep -> DataFrame -> DataFrame
+-- munge1 m df = foldl (++) (m df) []
 
 
 columnIsFactors :: [String] -> Bool
