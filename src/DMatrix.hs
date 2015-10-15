@@ -27,11 +27,11 @@ index i df = map (!! i) (body df)
 
 
 indexByColumn :: String -> DataFrame -> Maybe Int
-indexByColumn column df = L.elemIndex column (headers df) 
+indexByColumn col df = L.elemIndex col (headers df) 
 
 
 column :: String -> DataFrame -> [String]
-column c df = case indexByColumn c df of
+column colname df = case indexByColumn colname df of
   Just i -> index i df
   Nothing -> []
 
@@ -44,14 +44,14 @@ factorize xs = map fn xs where
 
 
 dummyLists :: [String] -> [[String]]
-dummyLists column = map fn (unique column) where
-  fn x = [ if j == x then "1" else "0" | j <- column ]
+dummyLists col = map fn (unique col) where
+  fn x = [ if j == x then "1" else "0" | j <- col ]
 
 
 processColumn :: [String] -> [[String]]
-processColumn c = case columnIsFactors c of
-  False -> [c] --map strToFloat c
-  True -> dummyLists c
+processColumn col = case columnIsFactors col of
+  False -> [col] --map strToFloat c
+  True -> dummyLists col
 
 
 dummyDf :: [[String]] -> [[[String]]]
@@ -77,8 +77,8 @@ dummyDf (x:xs) = (processColumn x) : (dummyDf xs)
 
 
 columnIsFactors :: [String] -> Bool
-columnIsFactors c = or $ map D.isNothing $
-  map (R.readMaybe :: String -> Maybe Float) c
+columnIsFactors col = or $ map D.isNothing $
+  map (R.readMaybe :: String -> Maybe Float) col
 
 
 seqAlong :: [a] -> [Int]
@@ -92,9 +92,9 @@ which xs = filter (\x -> x /= -1)
 
 
 convertColumn :: [String] -> [Float]
-convertColumn c = case columnIsFactors c of
-  False -> map strToFloat c
-  True -> factorize c
+convertColumn col = case columnIsFactors col of
+  False -> map strToFloat col
+  True -> factorize col
 
 
 toDMatrix :: DataFrame -> DMatrix
